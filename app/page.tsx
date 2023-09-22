@@ -5,7 +5,7 @@ import getCoins from "@/utils/coinStore";
 
 export default async function Home() {
   const data: [] = await getCoins();
-  console.log(data);
+
   return (
     <>
       <Hero />
