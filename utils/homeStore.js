@@ -20,7 +20,7 @@ const homeStore = create((set) => ({
         image: coin.item.large,
         id: coin.item.id,
         priceBtc: coin.item.price_btc,
-        priceUsd: (coin.item.price_btc * btcPrice).toFixed(7),
+        priceUsd: (coin.item.price_btc * btcPrice).toPrecision(7),
         symbol: coin.item.symbol,
       };
     });

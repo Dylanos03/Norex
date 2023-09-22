@@ -20,7 +20,7 @@ const config: Config = {
         },
       },
       animation: {
-        sliding: "slide 10s linear infinite",
+        sliding: "slide 15s linear infinite",
       },
     },
   },
