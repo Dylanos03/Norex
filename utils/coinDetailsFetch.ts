@@ -1,6 +1,6 @@
 export async function coinDetailsFetch(coinID: string) {
   const response = await fetch(
-    "https://api.coingecko.com/api/v3/coins/" + coinID
+    `https://api.coingecko.com/api/v3/coins/${coinID}`
   );
   const resJson = await response.json();
 

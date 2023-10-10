@@ -13,10 +13,12 @@ export default async function getCoins() {
   let coinArray = [];
 
   const results = await fetch(
-    "https://api.coingecko.com/api/v3/search/trending"
+    "https://api.coingecko.com/api/v3/search/trending",
+    { cache: "reload" }
   );
   const exchangeRates = await fetch(
-    "https://api.coingecko.com/api/v3/exchange_rates"
+    "https://api.coingecko.com/api/v3/exchange_rates",
+    { cache: "reload" }
   );
   const exchangeRatesJson = await exchangeRates.json();
   const btcPriceUsd = await exchangeRatesJson.rates.usd.value;
