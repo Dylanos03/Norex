@@ -14,7 +14,7 @@ function Navbar() {
           <Link href={"/"}>Home</Link>
           <Link href={"/search"}>Search</Link>
           <Link href={"/"}>NFTs</Link>
-          <Link href={"/"}>Account</Link>
+
           <AccountOptions />
         </div>
       </div>

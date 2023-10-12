@@ -1,5 +1,6 @@
 import CoinBio from "./coinBio";
 type coinType = {
+  ID: string;
   name?: string;
   priceUSD?: number;
   icon?: string;
@@ -17,6 +18,7 @@ function TopCoin({ coinData }: { coinData: [] }) {
           {coinData.slice(0, 1).map((item: coinType) => {
             return (
               <CoinBio
+                coinID={item.ID}
                 key={item.name}
                 coinName={item.name!}
                 coinPriceUSD={item.priceUSD!}
@@ -30,6 +32,7 @@ function TopCoin({ coinData }: { coinData: [] }) {
           {coinData.slice(1, 3).map((item: coinType) => {
             return (
               <CoinBio
+                coinID={item.ID}
                 key={item.name}
                 coinName={item.name!}
                 coinPriceUSD={item.priceUSD!}

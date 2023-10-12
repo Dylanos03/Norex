@@ -1,19 +1,21 @@
-export function CustomTooltip({
+type payloadType = { value: number };
+
+export const CustomTooltip = ({
   payload,
   label,
   active,
 }: {
-  payload: number;
+  payload: payloadType[];
   label: string;
   active: boolean;
-}) {
+}) => {
   if (active) {
     return (
-      <div>
+      <div className="bg-white p-2">
         <p>{label}</p>
-        <p>${payload}</p>
+        <p>${payload[0].value.toPrecision(7)}</p>
       </div>
     );
   }
   return null;
-}
+};

@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { coinDetailsFetch } from "@/utils/coinDetailsFetch";
-import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis } from "recharts";
-import { coinHistoryFetch } from "@/utils/coinHistoryFetch";
-import { CustomTooltip } from "@/components/coinInfo/tooltip";
+import Image from "next/image";
+
+import HistoryGraph from "@/components/coinInfo/historyGraph";
 
 type coinDataType = {
   name: string;
@@ -23,17 +23,17 @@ type coinChangeType = {
 function CoinInfo({ params }: { params: { coinInfo: string } }) {
   const [coinData, setCoinData] = useState<coinDataType>({});
   const [isLoading, setIsLoading] = useState(true);
-  const [coinHistory, setCoinHistory] = useState([]);
+
   useEffect(() => {
     async function gettingData() {
       const data = await coinDetailsFetch(params.coinInfo);
-      const history = await coinHistoryFetch(params.coinInfo, "max");
+
       setCoinData(data);
-      setCoinHistory(history);
+
       setIsLoading(false);
     }
     gettingData();
-  }, []);
+  }, [params.coinInfo]);
   return (
     <>
       <div className="py-24">
@@ -52,7 +52,7 @@ function CoinInfo({ params }: { params: { coinInfo: string } }) {
         ) : (
           <div className="flex gap-4 justify-center items-center">
             <div>
-              <img src={coinData.image} alt={coinData.name} />
+              <Image src={coinData.image} alt={coinData.name} />
             </div>
             <div className="flex flex-col gap-1">
               <h1 className="font-bold text-4xl overflow-hidden">
@@ -80,11 +80,7 @@ function CoinInfo({ params }: { params: { coinInfo: string } }) {
           </div>
         )}
         <div className="w-full flex justify-center">
-          <AreaChart width={600} height={400} data={coinHistory}>
-            <XAxis dataKey={"date"} />
-            <Area type="monotone" dataKey="price" stroke="#8884d8" />
-            <Tooltip content={<CustomTooltip />} />
-          </AreaChart>
+          <HistoryGraph coinID={params.coinInfo} />
         </div>
       </div>
     </>

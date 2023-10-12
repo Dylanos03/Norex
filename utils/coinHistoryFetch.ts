@@ -3,7 +3,7 @@ export async function coinHistoryFetch(
   numberOfDays: number | string
 ) {
   const response = await fetch(
-    `https://api.coingecko.com/api/v3/coins/${coinID}/market_chart?vs_currency=usd&days=max`
+    `https://api.coingecko.com/api/v3/coins/${coinID}/market_chart?vs_currency=usd&days=${numberOfDays}`
   );
   const resJson = await response.json();
   const historyData = await resJson.prices.map((item: number[]) => {
@@ -11,6 +11,6 @@ export async function coinHistoryFetch(
     const newDate = new Date(date).toLocaleDateString("en-UK");
     return { price: price, date: newDate };
   });
-  console.log(historyData);
+
   return historyData;
 }

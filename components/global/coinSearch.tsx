@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { searchCoins } from "@/utils/coinSearch";
 import Link from "next/link";
+import Image from "next/image";
 
 type listedCoins = {
   id: number;
@@ -33,7 +34,7 @@ function CoinSearch() {
                 className="flex w-full justify-between items-center bg-slate-200 rounded-lg py-4 px-8"
               >
                 <div className="flex items-center gap-1">
-                  <img src={item.thumb} alt={item.name} />
+                  <Image src={item.thumb} alt={item.name} />
                   <p>{item.name}</p>
                 </div>
                 <p>({item.symbol})</p>

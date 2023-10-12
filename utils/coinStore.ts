@@ -3,6 +3,7 @@ interface coinType {
 }
 
 interface coinObjectType {
+  id: string;
   name: string;
   price_btc: number;
   small: string;
@@ -25,6 +26,7 @@ export default async function getCoins() {
   const data = await results.json();
   coinArray = await data.coins.map((coins: coinType) => {
     return {
+      ID: coins.item.id,
       symbol: coins.item.symbol,
       name: coins.item.name,
       priceUSD: (coins.item.price_btc * btcPriceUsd).toPrecision(7),
