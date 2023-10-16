@@ -21,7 +21,14 @@ type coinChangeType = {
 };
 
 function CoinInfo({ params }: { params: { coinInfo: string } }) {
-  const [coinData, setCoinData] = useState<coinDataType | any>({});
+  const [coinData, setCoinData] = useState<coinDataType>({
+    name: "",
+    price: 0,
+    image: "",
+    symbol: "",
+    desc: "",
+    priceChange: [],
+  });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

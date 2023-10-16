@@ -17,7 +17,7 @@ function HistoryGraph({ coinID }: { coinID: string }) {
       setLoading(false);
     }
     fetchingHistory(coinID, timeFrame);
-  }, [coinID]);
+  }, [coinID, timeFrame]);
 
   const handleClick = (e: any): void => {
     setTimeFrame(e.target.id);
