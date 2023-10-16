@@ -15,7 +15,7 @@ function CoinBio(props: coinDataType) {
     <>
       <div className="flex gap-2 items-center">
         <div className={"px-16 py-12 bg-slate-50 rounded-md"}>
-          <Image src={props.coinIcon} alt={props.coinName} />
+          <img src={props.coinIcon} alt={props.coinName} />
         </div>
         <div className="flex flex-col gap-1">
           {props.topCoin && (

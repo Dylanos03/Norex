@@ -59,7 +59,7 @@ function CoinInfo({ params }: { params: { coinInfo: string } }) {
         ) : (
           <div className="flex gap-4 justify-center items-center">
             <div>
-              <Image src={coinData.image} alt={coinData.name} />
+              <img src={coinData.image} alt={coinData.name} />
             </div>
             <div className="flex flex-col gap-1">
               <h1 className="font-bold text-4xl overflow-hidden">

@@ -28,7 +28,9 @@ function HistoryGraph({ coinID }: { coinID: string }) {
       <AreaChart width={600} height={400} data={coinHistory}>
         <XAxis dataKey={"date"} />
         <Area type="monotone" dataKey="price" stroke="#8884d8" />
-        <Tooltip content={<CustomTooltip />} />
+        <Tooltip
+          content={<CustomTooltip payload={[]} label={""} active={false} />}
+        />
       </AreaChart>
       <div>
         {timeButtons.map((item) => {

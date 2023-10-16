@@ -10,7 +10,7 @@ function ProfileImage({
 }) {
   return (
     <Link href="/">
-      <Image
+      <img
         src={imageSrc}
         alt={"profile"}
         className={large ? "w-64 rounded-full" : "w-6 rounded-full"}
