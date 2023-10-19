@@ -5,6 +5,7 @@ import { coinDetailsFetch } from "@/utils/coinDetailsFetch";
 import Image from "next/image";
 
 import HistoryGraph from "@/components/coinInfo/historyGraph";
+import Link from "next/link";
 
 type coinDataType = {
   name: string;
@@ -44,6 +45,7 @@ function CoinInfo({ params }: { params: { coinInfo: string } }) {
   return (
     <>
       <div className="py-24">
+        <Link href={"/search"}>Back</Link>
         {isLoading ? (
           <div className="flex gap-4 justify-center items-center">
             <div>
@@ -57,7 +59,7 @@ function CoinInfo({ params }: { params: { coinInfo: string } }) {
             </div>
           </div>
         ) : (
-          <div className="flex gap-4 justify-center items-center">
+          <div className="flex gap-4 justify-center items-center py-20">
             <div>
               <img src={coinData.image} alt={coinData.name} />
             </div>

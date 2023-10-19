@@ -24,18 +24,23 @@ function HistoryGraph({ coinID }: { coinID: string }) {
   };
 
   return (
-    <div className="relative">
+    <div className="relative flex">
       <AreaChart width={600} height={400} data={coinHistory}>
         <XAxis dataKey={"date"} />
-        <Area type="monotone" dataKey="price" stroke="#8884d8" />
+        <Area type="monotone" dataKey="price" stroke="#2564eb" />
         <Tooltip
           content={<CustomTooltip payload={[]} label={""} active={false} />}
         />
       </AreaChart>
-      <div>
+      <div className=" flex flex-col gap-4">
         {timeButtons.map((item) => {
           return (
-            <button key={item} id={item} onClick={handleClick}>
+            <button
+              className="bg-slate-100 py-1 px-4"
+              key={item}
+              id={item}
+              onClick={handleClick}
+            >
               {item}
             </button>
           );
