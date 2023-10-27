@@ -8,7 +8,10 @@ export async function coinHistoryFetch(
   const resJson = await response.json();
   const historyData = await resJson.prices.map((item: number[]) => {
     const [date, price] = item;
-    const newDate = new Date(date).toLocaleDateString("en-UK");
+    const newDate = new Date(date).toLocaleDateString("en-UK", {
+      month: "short",
+      year: "numeric",
+    });
     return { price: price, date: newDate };
   });
 

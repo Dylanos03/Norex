@@ -44,8 +44,15 @@ function CoinInfo({ params }: { params: { coinInfo: string } }) {
   }, [params.coinInfo]);
   return (
     <>
-      <div className="py-24">
-        <Link href={"/search"}>Back</Link>
+      <div className="py-24 flex flex-col px-6">
+        <div className="flex items-center gap-4">
+          <Link href={"/search"}>Back</Link>
+          <h1 className="text-3xl font-extrabold">{coinData.name}</h1>
+        </div>
+
+        <div className="flex justify-center">
+          <HistoryGraph coinID={params.coinInfo} />
+        </div>
         {isLoading ? (
           <div className="flex gap-4 justify-center items-center">
             <div>
@@ -59,16 +66,14 @@ function CoinInfo({ params }: { params: { coinInfo: string } }) {
             </div>
           </div>
         ) : (
-          <div className="flex gap-4 justify-center items-center py-20">
-            <div>
-              <img src={coinData.image} alt={coinData.name} />
-            </div>
+          <div className="flex gap-4 justify-center items-center py-20 ">
             <div className="flex flex-col gap-1">
+              <img src={coinData.image} alt={coinData.name} className="w-16" />
               <h1 className="font-bold text-4xl overflow-hidden">
                 {coinData.name}
               </h1>
-              <p>${coinData.price}</p>
-              <h3>Price Change</h3>
+              <p className="text-green-500">${coinData.price}</p>
+              <h3 className="font-semibold text-xl">Price Change:</h3>
               <div className="flex gap-4">
                 {coinData.priceChange.map((item, index) => {
                   return (
@@ -85,12 +90,11 @@ function CoinInfo({ params }: { params: { coinInfo: string } }) {
                   );
                 })}
               </div>
+              <h4 className="font-semibold text-xl">Coin description:</h4>
+              <p className="max-w-5xl">{coinData.desc}</p>
             </div>
           </div>
         )}
-        <div className="w-full flex justify-center">
-          <HistoryGraph coinID={params.coinInfo} />
-        </div>
       </div>
     </>
   );
