@@ -4,7 +4,7 @@ function HomeCoinSearch() {
   return (
     <>
       <div className="flex justify-center ">
-        <div className="w-full px-4">
+        <div className="w-full max-w-7xl px-4">
           <h2 className="font-bold text-4xl overflow-hidden">
             Search for a coin
           </h2>

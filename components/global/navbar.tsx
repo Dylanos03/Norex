@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
-import AccountOptions from "./account";
 
 function Navbar() {
   return (
@@ -14,8 +13,6 @@ function Navbar() {
           <Link href={"/"}>Home</Link>
           <Link href={"/search"}>Search</Link>
           <Link href={"/"}>NFTs</Link>
-
-          <AccountOptions />
         </div>
       </div>
     </>
