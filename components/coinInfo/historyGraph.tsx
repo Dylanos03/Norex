@@ -2,11 +2,12 @@ import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import { CustomTooltip } from "./tooltip";
 import { useEffect, useState } from "react";
 import { coinHistoryFetch } from "@/utils/coinHistoryFetch";
+import LoadingSpinner from "../global/loadingSpinner";
 const timeButtons = ["1", "7", "14", "30", "max"];
 
 function HistoryGraph({ coinID }: { coinID: string }) {
   const [coinHistory, setCoinHistory] = useState([]);
-  const [timeFrame, setTimeFrame] = useState("30");
+  const [timeFrame, setTimeFrame] = useState("1");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -20,15 +21,14 @@ function HistoryGraph({ coinID }: { coinID: string }) {
   }, [coinID, timeFrame]);
 
   const handleClick = (e: any): void => {
-    setTimeFrame(e.target.id);
+    setTimeFrame(e.target.value);
   };
 
   return (
     <div className="relative w-full max-w-5xl">
-      <div className="h-64">
+      <div className="h-72">
         <ResponsiveContainer>
           <AreaChart data={coinHistory}>
-            <XAxis dataKey={"date"} />
             <Area
               type="monotone"
               dataKey="price"
@@ -42,22 +42,25 @@ function HistoryGraph({ coinID }: { coinID: string }) {
         </ResponsiveContainer>
       </div>
 
-      <div className=" flex  gap-4">
-        {timeButtons.map((item) => {
-          return (
-            <button
-              className="bg-blue-100 py-1 px-4 rounded-sm"
-              key={item}
-              id={item}
-              onClick={handleClick}
-            >
-              {item}
-            </button>
-          );
-        })}
+      <div className="absolute top-0 right-0 flex  gap-4">
+        <select onChange={handleClick}>
+          {timeButtons.map((item) => {
+            return (
+              <option
+                className="bg-blue-100 py-1 px-4 rounded-sm"
+                key={item}
+                id={item}
+              >
+                {item}
+              </option>
+            );
+          })}
+        </select>
       </div>
       {loading && (
-        <div className="absolute top-0 bg-opacity-50 bg-white w-full h-full"></div>
+        <div className="absolute flex justify-center items-center top-0 bg-opacity-50 bg-white w-full h-full">
+          <LoadingSpinner width={16} />
+        </div>
       )}
     </div>
   );
