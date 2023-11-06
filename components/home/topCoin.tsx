@@ -14,8 +14,8 @@ function TopCoin({ coinData }: { coinData: [] }) {
         <h2 className="font-bold text-4xl overflow-hidden">
           Top ranking coins
         </h2>
-        <div className="flex gap-16">
-          {coinData.slice(0, 1).map((item: coinType) => {
+        <div className="flex gap-4 flex-wrap">
+          {coinData.slice(0, 3).map((item: coinType) => {
             return (
               <CoinBio
                 coinID={item.ID}
@@ -23,21 +23,6 @@ function TopCoin({ coinData }: { coinData: [] }) {
                 coinName={item.name!}
                 coinPriceUSD={item.priceUSD!}
                 coinIcon={item.icon!}
-                topCoin={true}
-                coinSymbol={item.symbol!}
-              />
-            );
-          })}
-
-          {coinData.slice(1, 3).map((item: coinType) => {
-            return (
-              <CoinBio
-                coinID={item.ID}
-                key={item.name}
-                coinName={item.name!}
-                coinPriceUSD={item.priceUSD!}
-                coinIcon={item.icon!}
-                topCoin={false}
                 coinSymbol={item.symbol!}
               />
             );
