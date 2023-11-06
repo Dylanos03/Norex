@@ -63,7 +63,7 @@ function CoinInfo({ params }: { params: { coinInfo: string } }) {
             <h3 className="font-semibold">Price Change:</h3>
             {coinData.priceChange.map((item) => {
               return (
-                <p>
+                <p key={item.key}>
                   {item.key}:{" "}
                   <span
                     className={
