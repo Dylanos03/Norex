@@ -9,7 +9,7 @@ type coinType = {
 
 function TopCoin({ coinData }: { coinData: [] }) {
   return (
-    <div className="w-full flex justify-center my-16">
+    <div className=" text-black dark:text-white w-full flex justify-center my-16">
       <div className="max-w-7xl flex-col flex gap-12 justify-between">
         <h2 className="font-bold text-4xl overflow-hidden">
           Top ranking coins

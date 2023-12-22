@@ -32,7 +32,7 @@ function HistoryGraph({ coinID }: { coinID: string }) {
   };
 
   return (
-    <div className="relative w-full max-w-5xl bg-slate-100 p-8 rounded-xl">
+    <div className="relative w-full max-w-5xl dark:bg-slate-800 bg-slate-100 p-8 rounded-xl">
       <div className="h-72">
         <ResponsiveContainer>
           <AreaChart data={coinHistory}>
@@ -51,15 +51,14 @@ function HistoryGraph({ coinID }: { coinID: string }) {
           </AreaChart>
         </ResponsiveContainer>
       </div>
-      <div className="absolute top-0 right-0 flex  gap-4">
-        <select onChange={handleClick}>
+      <div className="absolute top-4 right-4 flex  gap-4">
+        <select
+          onChange={handleClick}
+          className="bg-blue-100 dark:bg-slate-800 text-black dark:text-white"
+        >
           {timeButtons.map((item) => {
             return (
-              <option
-                className="bg-blue-100 py-1 px-4 rounded-sm"
-                key={item}
-                id={item}
-              >
+              <option className=" py-1 px-4 rounded-sm" key={item} id={item}>
                 {item}
               </option>
             );

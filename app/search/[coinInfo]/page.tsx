@@ -47,7 +47,7 @@ function CoinInfo({ params }: { params: { coinInfo: string } }) {
     gettingData();
   }, [params.coinInfo]);
   return (
-    <>
+    <main className="dark:bg-gradient-to-r dark:from-slate-950 dark:to-slate-900 bg-white text-black dark:text-white">
       <div className="flex flex-col gap-4 w-full max-w-6xl my-14 m-auto">
         <div className="flex items-center gap-4">
           <Link href={"/search"} className="font-bold text-2xl">
@@ -58,7 +58,7 @@ function CoinInfo({ params }: { params: { coinInfo: string } }) {
         </div>
         <div className="w-full flex gap-4">
           <HistoryGraph coinID={params.coinInfo} />
-          <div className="lg:w-1/3 flex flex-col bg-slate-100 p-8 rounded-2xl justify-between">
+          <div className="lg:w-1/3 flex flex-col bg-slate-100 dark:bg-slate-800 p-8 rounded-2xl justify-between">
             <h2 className="font-semibold text-xl">
               Price <span className="text-green-700">${coinData.price}</span>
             </h2>
@@ -89,12 +89,12 @@ function CoinInfo({ params }: { params: { coinInfo: string } }) {
             </h4>
           </div>
         </div>
-        <div className="bg-slate-100 p-8 rounded-2xl">
+        <div className="bg-slate-100 dark:bg-slate-800 p-8 rounded-2xl">
           <h3 className="font-bold text-2xl">Description</h3>
           {parse(coinData.desc)}
         </div>
       </div>
-    </>
+    </main>
   );
 }
 

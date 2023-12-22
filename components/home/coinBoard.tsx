@@ -5,7 +5,7 @@ type coinType = {
 
 function CoinBoard({ coinData }: { coinData: [] }) {
   return (
-    <div className="w-max flex gap-8 relative bg-gray-900 text-white h-12 items-center ">
+    <div className="dark:bg-white dark:text-black w-max flex gap-8 relative bg-gray-900 text-white h-12 items-center ">
       <div className="flex gap-8 lg:gap-16 animate-sliding ">
         <p className="text-green-500">Trending</p>
         {coinData.map((item: coinType) => {

@@ -10,12 +10,12 @@ export default async function Home() {
   const data: [] = await getCoins();
 
   return (
-    <>
+    <div className="bg-white dark:bg-gradient-to-r dark:from-slate-950 dark:to-slate-900 text-black dark:text-white">
       <Hero />
       <CoinBoard coinData={data} />
       <TopCoin coinData={data} />
       <HomeCoinSearch />
       <NftHome />
-    </>
+    </div>
   );
 }
