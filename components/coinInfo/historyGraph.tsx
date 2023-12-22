@@ -1,4 +1,11 @@
-import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis } from "recharts";
+import {
+  Area,
+  AreaChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 import { CustomTooltip } from "./tooltip";
 import { useEffect, useState } from "react";
 import { coinHistoryFetch } from "@/utils/coinHistoryFetch";
@@ -25,7 +32,7 @@ function HistoryGraph({ coinID }: { coinID: string }) {
   };
 
   return (
-    <div className="relative w-full max-w-5xl">
+    <div className="relative w-full max-w-5xl bg-slate-100 p-8 rounded-xl">
       <div className="h-72">
         <ResponsiveContainer>
           <AreaChart data={coinHistory}>
@@ -35,13 +42,15 @@ function HistoryGraph({ coinID }: { coinID: string }) {
               stroke="#2564eb"
               fill="#2564eb"
             />
+            <XAxis dataKey={"date"} />
             <Tooltip
-              content={<CustomTooltip payload={[]} label={""} active={false} />}
+              content={
+                <CustomTooltip payload={[]} label={"date"} active={false} />
+              }
             />
           </AreaChart>
         </ResponsiveContainer>
       </div>
-
       <div className="absolute top-0 right-0 flex  gap-4">
         <select onChange={handleClick}>
           {timeButtons.map((item) => {

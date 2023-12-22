@@ -28,13 +28,6 @@ export async function coinDetailsFetch(coinID: string) {
         key: "30d",
       },
     ],
-    priceChange24hr:
-      resJson.market_data.price_change_percentage_24h_in_currency.usd,
-    priceChange7d:
-      resJson.market_data.price_change_percentage_7d_in_currency.usd,
-    priceChange14d:
-      resJson.market_data.price_change_percentage_14d_in_currency.usd,
-    priceChange30d:
-      resJson.market_data.price_change_percentage_30d_in_currency.usd,
+    homeLink: resJson.links.homepage[0],
   };
 }

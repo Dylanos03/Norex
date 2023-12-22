@@ -16,6 +16,7 @@ type coinDataType = {
   symbol: string;
   desc: string;
   priceChange: coinChangeType[];
+  homeLink: string;
 };
 
 type coinChangeType = {
@@ -31,6 +32,7 @@ function CoinInfo({ params }: { params: { coinInfo: string } }) {
     symbol: "",
     desc: "",
     priceChange: [],
+    homeLink: "",
   });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -46,7 +48,7 @@ function CoinInfo({ params }: { params: { coinInfo: string } }) {
   }, [params.coinInfo]);
   return (
     <>
-      <div className="flex flex-col w-full max-w-6xl my-14 m-auto">
+      <div className="flex flex-col gap-4 w-full max-w-6xl my-14 m-auto">
         <div className="flex items-center gap-4">
           <Link href={"/search"} className="font-bold text-2xl">
             {"<"}
@@ -75,9 +77,19 @@ function CoinInfo({ params }: { params: { coinInfo: string } }) {
                 </p>
               );
             })}
+            <h4>
+              Link:{" "}
+              <a
+                href={coinData.homeLink}
+                className="text-blue-800"
+                target="_blank"
+              >
+                {coinData.homeLink}
+              </a>
+            </h4>
           </div>
         </div>
-        <div>
+        <div className="bg-slate-100 p-8 rounded-2xl">
           <h3 className="font-bold text-2xl">Description</h3>
           {parse(coinData.desc)}
         </div>
