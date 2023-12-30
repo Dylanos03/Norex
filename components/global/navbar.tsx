@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import DarkToggle from "./darkToggle";
 
 function Navbar() {
   const [isDark, setIsDark] = useState(true);
@@ -25,7 +26,12 @@ function Navbar() {
           <Link href={"/"}>Home</Link>
           <Link href={"/search"}>Search</Link>
           <Link href={"/"}>NFTs</Link>
-          <button onClick={() => setIsDark(!isDark)}>setdark</button>
+          <div
+            onClick={() => setIsDark(!isDark)}
+            className="hover:text-blue-600"
+          >
+            <DarkToggle isDarkMode={isDark} />
+          </div>
         </div>
       </div>
     </>
